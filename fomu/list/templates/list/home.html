@@ -1,0 +1,62 @@
+{% extends 'list/base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <form action="{% url 'ListTask' %}"method="post">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" name="save" class="btn save">
+
+        </form>
+
+        <div class="todo-list">
+            {% for task in tasks %}
+            <div class="item-row">
+
+                {% if task.complete == True %}
+                <strike>{{task.title}}, {{task.due}}</strike>
+                {% else %}
+
+
+                <span>{{task.title}} {{task.created}}
+                    <span><b>Due:</b>{{task.due|timeuntil }}</span>
+                     {% endif %}
+<a href="{% url 'UpdateTask' task.id %}">Update</a>
+</span><a href="{% url 'DeleteTask' task.id %}">delete</a>
+              
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            var date_input=$('input[name="due"');
+            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+            var options={
+                dateFormat: 'yy-mm-dd',
+            };
+            date_input.datepicker(options);
+        })
+    </script>
+
+
+
+
+
+</body>
+</html>
+{% endblock %}

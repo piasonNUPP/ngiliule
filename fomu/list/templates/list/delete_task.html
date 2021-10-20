@@ -1,0 +1,36 @@
+{% extends 'list/base.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <b>
+            Deleting "<span style="color: red;">{{item}}</span>"
+            is pemanent...do you want to proceed? <br>
+            
+
+            <a href="{% url 'ListTask' %}">Back</a>
+        </b>
+
+            
+        <form action=""method="post">
+            {% csrf_token %}
+            {{form}}
+            <input type="submit" name="yes" value="yes" class="btn save">
+
+        </form>
+
+      
+
+    </div>
+</body>
+</html>
+{% endblock %}

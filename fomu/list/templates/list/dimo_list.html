@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        tr,th,td{
+            border:1px solid blue;
+            padding: 20px;
+        }
+        table{
+            margin-left: 5cm;
+            padding: 20px;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Lists</h1>
+    <a href="{% url 'add' %}"><button>Add</button></a>
+    <div>
+        
+            {% for message in messages %}
+
+            <h1>{{message}}</h1>
+
+            {% endfor %}
+        
+    </div>
+
+    <table style="border: 2px solid black;">
+
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>First Name</th>
+                <th>year</th>
+                <th>course</th>
+                <th>place</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% if students %}
+            {% for student in students %}
+
+            <tr>
+
+                <td>{{forloop.counter}}</td>
+                <td>{{student.fname}}</td>
+                <td>{{student.year}}</td>
+                <td>{{student.course}}</td>
+                <td>{{student.place}}</td>
+                <td>
+                    <a href="{% url 'rlist' student.pk %}"><button>View</button></a>
+                    <a href="{% url 'elist' student.pk %}"><button>Edit</button></a>
+                    <a href="{% url 'dlist' student.pk %}"><button>Delete</button></a>
+                    
+                </td>
+            </tr>
+
+
+
+
+
+
+
+
+
+
+            {% endfor %}
+            {% else %}
+            <h1>No Record Found</h1>
+            {% endif %}
+        </tbody>
+
+
+
+    </table>
+</body>
+</html>

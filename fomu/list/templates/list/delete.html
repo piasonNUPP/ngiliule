@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> Details for {{object.fname}}</h1>
+   <h2>Student Details</h2>
+   <ul>
+       <li>Name: {{object.fname}}</li>
+       <li>course: {{object.course}}</li>
+       <li>year: {{object.year}}</li>
+       <li>place: {{object.place}}</li>
+   </ul>
+
+   <p>Are you sure You want to delete a student {{object.fname}}</p>
+   <form action="" method="POST">
+       {% csrf_token %}
+  <input type="submit" value="yes, Delete">
+</form>
+   <a href="{% url 'slist' %}"><button> No Go Back</button></a>
+</body>
+</html>

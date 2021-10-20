@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <h1> Details for {{object.fname}}</h1>
+   <h2>Student Details</h2>
+   <ul>
+       <li>Name: {{object.fname}}</li>
+       <li>course: {{object.course}}</li>
+       <li>year: {{object.year}}</li>
+       <li>place: {{object.place}}</li>
+   </ul>
+   <a href="{% url 'slist' %}"><button>Back</button></a>
+</body>
+</html>
